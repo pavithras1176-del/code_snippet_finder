@@ -47,5 +47,4 @@ Then open your browser and go to: http://127.0.0.1:5000
 2. The system searches through all stored Python code snippets
 3. Results are ranked by TF-IDF relevance score
 4. Click "Copy Snippet" to copy any result to clipboard
-
 ## END OF PROJECT
