@@ -1,0 +1,40 @@
+<!-- Source Code Snippet Finder Template -->
+<h2>Source Code Snippet Finder</h2>
+
+<form method="post">
+    <input name="query" placeholder="Enter keyword" value="{{ query }}">
+    <button>Search</button>
+</form>
+
+<hr>
+
+{% if results|length == 0 and query %}
+    <p style="color:red; font-weight:bold;">
+        No such code snippet available.
+    </p>
+{% endif %}
+
+{% for r in results %}
+
+<div style="border:1px solid #aaa;padding:10px;margin:15px 0;">
+
+    <h3>{{ r.name }} — score: {{ r.score }}</h3>
+
+    <pre id="{{ r.name }}" style="background:#f4f4f4; padding:10px; overflow:auto;">
+{{ r.content }}
+    </pre>
+
+    <button onclick="copyCode('{{ r.name }}')">
+        Copy Snippet
+    </button>
+
+</div>
+{% endfor %}
+
+<script>
+function copyCode(id){
+    var text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text);
+    alert("Snippet Copied!");
+}
+</script>
